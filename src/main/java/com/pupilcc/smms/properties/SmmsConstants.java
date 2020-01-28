@@ -10,4 +10,5 @@ public interface SmmsConstants {
     String URL_GET_PROFILE = "/profile";
     String URL_UPLOAD_IMAGE = "/upload";
     String URL_UPLOAD_HISTORY = "/upload_history";
+    String URL_DELETE = "/delete";
 }
