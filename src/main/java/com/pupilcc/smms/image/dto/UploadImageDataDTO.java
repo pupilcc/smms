@@ -1,4 +1,4 @@
-package com.pupilcc.smms.user.dto;
+package com.pupilcc.smms.image.dto;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;

@@ -1,9 +1,9 @@
-package com.pupilcc.smms.user.service;
+package com.pupilcc.smms.image.service;
 
 import com.alibaba.fastjson.JSON;
 import com.pupilcc.smms.properties.SmmsConstants;
-import com.pupilcc.smms.user.dto.UploadHistoryDTO;
-import com.pupilcc.smms.user.dto.UploadImageDTO;
+import com.pupilcc.smms.image.dto.UploadHistoryDTO;
+import com.pupilcc.smms.image.dto.UploadImageDTO;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;

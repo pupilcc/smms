@@ -1,8 +1,8 @@
 package com.pupilcc.smms.user;
 
-import com.pupilcc.smms.user.dto.UploadHistoryDTO;
-import com.pupilcc.smms.user.dto.UploadImageDTO;
-import com.pupilcc.smms.user.service.ImageService;
+import com.pupilcc.smms.image.dto.UploadHistoryDTO;
+import com.pupilcc.smms.image.dto.UploadImageDTO;
+import com.pupilcc.smms.image.service.ImageService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
