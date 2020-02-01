@@ -1,10 +1,12 @@
 package com.pupilcc.smms.user.service;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
+import com.pupilcc.smms.base.dto.BaseDataDTO;
 import com.pupilcc.smms.properties.SmmsConstants;
 import com.pupilcc.smms.properties.SmmsProperties;
-import com.pupilcc.smms.user.dto.ProfileDTO;
-import com.pupilcc.smms.user.dto.TokenDTO;
+import com.pupilcc.smms.user.dto.ProfileDataDTO;
+import com.pupilcc.smms.user.dto.TokenDataDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -36,7 +38,7 @@ public class UserService {
      * Get API Token
      * @return Token DTO 对象
      */
-    public TokenDTO getToken() {
+    public BaseDataDTO<TokenDataDTO> getToken() {
         MultiValueMap<String, String> paramMap = new LinkedMultiValueMap<>(2);
         paramMap.add("username", properties.getUsername());
         paramMap.add("password", properties.getPassword());
@@ -50,23 +52,25 @@ public class UserService {
         String response = restTemplate.postForObject(
                 SmmsConstants.URL_API + SmmsConstants.URL_GET_TOKEN, request, String.class);
 
-        return JSON.parseObject(response, TokenDTO.class);
+        return JSON.parseObject(response, new TypeReference<BaseDataDTO<TokenDataDTO>>(){});
     }
 
     /**
      * Get User Profile
      * @return Profile DTO 对象
      */
-    public ProfileDTO getProfile() {
+    public BaseDataDTO<ProfileDataDTO> getProfile() {
         HttpHeaders headers = new HttpHeaders();
+        BaseDataDTO<TokenDataDTO> tokenDTO = getToken();
+
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        headers.setBasicAuth(getToken().getData().getToken());
+        headers.setBasicAuth(tokenDTO.getData().getToken());
         headers.add("user-agent",
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(headers);
 
         String response = restTemplate.postForObject(
                 SmmsConstants.URL_API + SmmsConstants.URL_GET_PROFILE, request, String.class);
-        return JSON.parseObject(response, ProfileDTO.class);
+        return JSON.parseObject(response, new TypeReference<BaseDataDTO<ProfileDataDTO>>(){});
     }
 }

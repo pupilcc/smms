@@ -1,16 +1,15 @@
-package com.pupilcc.smms.image.dto;
+package com.pupilcc.smms.base.dto;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
-import java.util.List;
-
 /**
- * 上传历史记录接口的 DTO 对象
+ * 基础数据类型 DTO 对象
+ * @param <T>
  * @author pupilcc
  */
 @Data
-public class UploadHistoryDTO {
+public class BaseDataDTO<T> {
     /**
      * Request status
      */
@@ -29,7 +28,7 @@ public class UploadHistoryDTO {
     /**
      * data
      */
-    private List<UploadImageDataDTO> data;
+    private T data;
 
     /**
      * Request ID

@@ -1,7 +1,8 @@
 package com.pupilcc.smms.user;
 
-import com.pupilcc.smms.user.dto.ProfileDTO;
-import com.pupilcc.smms.user.dto.TokenDTO;
+import com.pupilcc.smms.base.dto.BaseDataDTO;
+import com.pupilcc.smms.user.dto.ProfileDataDTO;
+import com.pupilcc.smms.user.dto.TokenDataDTO;
 import com.pupilcc.smms.user.service.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,13 +16,13 @@ class UserServiceTests {
 
     @Test
     void getToken() {
-        TokenDTO dto = userService.getToken();
+        BaseDataDTO<TokenDataDTO> dto = userService.getToken();
         Assertions.assertEquals(dto.getSuccess(), true);
     }
 
     @Test
     void getProfile() {
-        ProfileDTO dto = userService.getProfile();
+        BaseDataDTO<ProfileDataDTO> dto = userService.getProfile();
         Assertions.assertEquals(dto.getSuccess(), true);
     }
 }

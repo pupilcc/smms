@@ -1,8 +1,9 @@
 package com.pupilcc.smms.config;
 
+import com.pupilcc.smms.base.dto.BaseDataDTO;
 import com.pupilcc.smms.properties.SmmsProperties;
-import com.pupilcc.smms.user.dto.ProfileDTO;
-import com.pupilcc.smms.user.dto.TokenDTO;
+import com.pupilcc.smms.user.dto.ProfileDataDTO;
+import com.pupilcc.smms.user.dto.TokenDataDTO;
 import com.pupilcc.smms.user.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,12 +29,12 @@ public class Config {
     }
 
     @Bean
-    public TokenDTO tokenDTO() {
+    public BaseDataDTO<TokenDataDTO> tokenDTO() {
         return new UserService(smmsProperties, restTemplate()).getToken();
     }
 
     @Bean
-    public ProfileDTO profileDTO() {
+    public BaseDataDTO<ProfileDataDTO> profileDTO() {
         return new UserService(smmsProperties, restTemplate()).getProfile();
     }
 

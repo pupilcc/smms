@@ -1,8 +1,8 @@
 package com.pupilcc.smms.user;
 
 import com.pupilcc.smms.base.dto.BaseDTO;
-import com.pupilcc.smms.image.dto.UploadHistoryDTO;
-import com.pupilcc.smms.image.dto.UploadImageDTO;
+import com.pupilcc.smms.base.dto.BaseListDataDTO;
+import com.pupilcc.smms.image.dto.ImageDataDTO;
 import com.pupilcc.smms.image.service.ImageService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -28,7 +28,7 @@ class ImageServiceTests {
 
     @Test
     void uploadHistory() {
-        UploadHistoryDTO dto = imageService.uploadHistory();
+        BaseListDataDTO<ImageDataDTO> dto = imageService.uploadHistory();
         logger.info(dto.toString());
         Assertions.assertEquals(dto.getSuccess(), true);
     }
@@ -44,7 +44,8 @@ class ImageServiceTests {
 //        MultipartFile multipartFile = new MockMultipartFile(
 //                "file.jpg", "free_stock_photo.jpg", "", in);
 //
-//        UploadImageDTO dto = imageService.uploadImage(multipartFile, "json");
+//        BaseListDataDTO<ImageDataDTO> dto = imageService.uploadImage(multipartFile, "json");
+//        logger.info(dto.toString());
 //        Assertions.assertEquals(dto.getSuccess(), true);
     }
 

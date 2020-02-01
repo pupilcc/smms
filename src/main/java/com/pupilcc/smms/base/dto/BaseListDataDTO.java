@@ -1,14 +1,17 @@
-package com.pupilcc.smms.user.dto;
+package com.pupilcc.smms.base.dto;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
+import java.util.List;
+
 /**
- * Get Profile DTO
+ * 基础数据类型 DTO 对象（List Data）
+ * @param <T>
  * @author pupilcc
  */
 @Data
-public class ProfileDTO {
+public class BaseListDataDTO<T> {
     /**
      * Request status
      */
@@ -27,7 +30,7 @@ public class ProfileDTO {
     /**
      * data
      */
-    private ProfileDataDTO data;
+    private List<T> data;
 
     /**
      * Request ID

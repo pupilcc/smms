@@ -4,11 +4,11 @@ import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
 /**
- * 上传图片接口中的 data 参数
+ * 图片数据 DTO
  * @author pupilcc
  */
 @Data
-public class UploadImageDataDTO {
+public class ImageDataDTO {
     /**
      * Width
      */
