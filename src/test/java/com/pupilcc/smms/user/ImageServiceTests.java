@@ -5,6 +5,7 @@ import com.pupilcc.smms.base.dto.BaseListDataDTO;
 import com.pupilcc.smms.image.dto.ImageDataDTO;
 import com.pupilcc.smms.image.service.ImageService;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,26 +35,26 @@ class ImageServiceTests {
     }
 
     @Test
+    @Disabled
     void uploadImage() throws Exception {
-        // 避免打包时测试方法失败
-//        RestTemplate restTemplate = new RestTemplate();
-//
-//        String url = "https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg";
-//        ResponseEntity<Resource> entity = restTemplate.getForEntity(url, Resource.class);
-//        InputStream in = Objects.requireNonNull(entity.getBody()).getInputStream();
-//        MultipartFile multipartFile = new MockMultipartFile(
-//                "file.jpg", "free_stock_photo.jpg", "", in);
-//
-//        BaseListDataDTO<ImageDataDTO> dto = imageService.uploadImage(multipartFile, "json");
-//        logger.info(dto.toString());
-//        Assertions.assertEquals(dto.getSuccess(), true);
+        RestTemplate restTemplate = new RestTemplate();
+
+        String url = "https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg";
+        ResponseEntity<Resource> entity = restTemplate.getForEntity(url, Resource.class);
+        InputStream in = Objects.requireNonNull(entity.getBody()).getInputStream();
+        MultipartFile multipartFile = new MockMultipartFile(
+                "file.jpg", "free_stock_photo.jpg", "", in);
+
+        BaseListDataDTO<ImageDataDTO> dto = imageService.uploadImage(multipartFile, "json");
+        logger.info(dto.toString());
+        Assertions.assertEquals(dto.getSuccess(), true);
     }
 
     @Test
+    @Disabled
     void deleteImage() {
-        // 避免打包时测试方法失败
-//        BaseDTO dto = imageService.deleteImage("GrH1oPac7EmbWlFxvg4Uksd2QJ", "json");
-//        logger.info(dto.toString());
-//        Assertions.assertEquals(dto.getSuccess(), true);
+        BaseDTO dto = imageService.deleteImage("GrH1oPac7EmbWlFxvg4Uksd2QJ", "json");
+        logger.info(dto.toString());
+        Assertions.assertEquals(dto.getSuccess(), true);
     }
 }
