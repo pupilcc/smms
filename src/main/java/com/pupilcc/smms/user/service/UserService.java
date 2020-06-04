@@ -6,14 +6,10 @@ import com.pupilcc.smms.base.dto.BaseDataDTO;
 import com.pupilcc.smms.properties.SmmsConstants;
 import com.pupilcc.smms.properties.SmmsProperties;
 import com.pupilcc.smms.user.dto.ProfileDataDTO;
-import com.pupilcc.smms.user.dto.TokenDataDTO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,8 +19,6 @@ import org.springframework.web.client.RestTemplate;
  */
 @Service
 public class UserService {
-    private Logger logger = LoggerFactory.getLogger(getClass());
-
     private final SmmsProperties properties;
     private final RestTemplate restTemplate;
 
@@ -33,38 +27,15 @@ public class UserService {
         this.restTemplate = restTemplate;
     }
 
-
-    /**
-     * Get API Token
-     * @return Token DTO 对象
-     */
-    public BaseDataDTO<TokenDataDTO> getToken() {
-        MultiValueMap<String, String> paramMap = new LinkedMultiValueMap<>(2);
-        paramMap.add("username", properties.getUsername());
-        paramMap.add("password", properties.getPassword());
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        headers.add("user-agent",
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(paramMap, headers);
-
-        String response = restTemplate.postForObject(
-                SmmsConstants.URL_API + SmmsConstants.URL_GET_TOKEN, request, String.class);
-
-        return JSON.parseObject(response, new TypeReference<BaseDataDTO<TokenDataDTO>>(){});
-    }
-
     /**
      * Get User Profile
      * @return Profile DTO 对象
      */
     public BaseDataDTO<ProfileDataDTO> getProfile() {
         HttpHeaders headers = new HttpHeaders();
-        BaseDataDTO<TokenDataDTO> tokenDTO = getToken();
 
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        headers.setBasicAuth(tokenDTO.getData().getToken());
+        headers.setBasicAuth(properties.getToken());
         headers.add("user-agent",
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(headers);

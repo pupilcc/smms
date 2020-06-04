@@ -8,7 +8,7 @@ SM.MS API 文档地址： https://doc.sm.ms/
 
 ## 使用
 
-1. 下载项目后，在 `SmmsProperties` 类中配置 smms 的帐号密码
+1. 下载项目后，在 `SmmsProperties` 类中配置 smms 的 API Token
 2. 使用 `mvn install` 命令安装到本地 maven 仓库
 3. 在 `pom.xml` 中引入：
 

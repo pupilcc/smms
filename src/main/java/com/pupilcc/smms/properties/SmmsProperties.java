@@ -11,12 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SmmsProperties {
     /**
-     * smms 帐号
+     * API Token
      */
-    private String username = "";
-
-    /**
-     * smms 密码
-     */
-    private String password = "";
+    private String token = "";
 }

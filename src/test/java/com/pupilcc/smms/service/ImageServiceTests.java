@@ -1,4 +1,4 @@
-package com.pupilcc.smms.user;
+package com.pupilcc.smms.service;
 
 import com.pupilcc.smms.base.dto.BaseDTO;
 import com.pupilcc.smms.base.dto.BaseListDataDTO;
