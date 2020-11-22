@@ -1,6 +1,6 @@
 package com.pupilcc.smms.image.dto;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
@@ -9,6 +9,12 @@ import lombok.Data;
  */
 @Data
 public class ImageDataDTO {
+    /**
+     * file_id
+     */
+    @JsonProperty("file_id")
+    private Number fileId;
+
     /**
      * Width
      */
@@ -27,7 +33,7 @@ public class ImageDataDTO {
     /**
      * Store name
      */
-    @JSONField(name = "storename")
+    @JsonProperty("storename")
     private String storeName;
 
     /**

@@ -1,6 +1,6 @@
 package com.pupilcc.smms.base.dto;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
@@ -33,6 +33,6 @@ public class BaseDataDTO<T> {
     /**
      * Request ID
      */
-    @JSONField(name = "RequestId")
+    @JsonProperty("RequestId")
     private String requestId;
 }

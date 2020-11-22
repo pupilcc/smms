@@ -1,11 +1,12 @@
 package com.pupilcc.smms.image.service;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.pupilcc.smms.base.dto.BaseDTO;
+import com.pupilcc.smms.base.dto.BaseDataDTO;
 import com.pupilcc.smms.base.dto.BaseListDataDTO;
 import com.pupilcc.smms.image.dto.ImageDataDTO;
 import com.pupilcc.smms.properties.SmmsConstants;
+import com.pupilcc.smms.util.JsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -41,7 +42,7 @@ public class ImageService {
      * @param format Return Type: json or xml, the default value is json
      * @return Upload Image DTO
      */
-    public BaseListDataDTO<ImageDataDTO> uploadImage(MultipartFile file, String format) {
+    public BaseDataDTO<ImageDataDTO> uploadImage(MultipartFile file, String format) {
         MultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<>(2);
         paramMap.add("smfile", file.getResource());
         paramMap.add("format", format);
@@ -51,7 +52,7 @@ public class ImageService {
         String response = restTemplate.postForObject(
                 SmmsConstants.URL_API + SmmsConstants.URL_UPLOAD_IMAGE, request, String.class);
 
-        return JSON.parseObject(response, new TypeReference<BaseListDataDTO<ImageDataDTO>>(){});
+        return JsonUtils.jsonToObj(new TypeReference<BaseDataDTO<ImageDataDTO>>(){}, response);
     }
 
     /**
@@ -64,7 +65,9 @@ public class ImageService {
         ResponseEntity<String> response = restTemplate.exchange(
                 SmmsConstants.URL_API + SmmsConstants.URL_UPLOAD_HISTORY,
                 HttpMethod.GET, request, String.class);
-        return JSON.parseObject(response.getBody(), new TypeReference<BaseListDataDTO<ImageDataDTO>>(){});
+
+        return JsonUtils.jsonToObj(
+                new TypeReference<BaseListDataDTO<ImageDataDTO>>(){}, response.getBody());
     }
 
     /**
@@ -75,9 +78,12 @@ public class ImageService {
      * @return BaseDTO 对象
      */
     public BaseDTO deleteImage(String hash, String format) {
-        String url = SmmsConstants.URL_API + SmmsConstants.URL_DELETE + "/" + hash + "?format=" + format;
+        String url = SmmsConstants.URL_API + SmmsConstants.URL_DELETE +
+                "/" + hash + "?format=" + format;
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(headers);
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
-        return JSON.parseObject(response.getBody(), BaseDTO.class);
+        ResponseEntity<String> response =
+                restTemplate.exchange(url, HttpMethod.GET, request, String.class);
+
+        return JsonUtils.jsonToObj(new BaseDTO(), response.getBody());
     }
 }

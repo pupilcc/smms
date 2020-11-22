@@ -1,11 +1,11 @@
 package com.pupilcc.smms.user.service;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.pupilcc.smms.base.dto.BaseDataDTO;
 import com.pupilcc.smms.properties.SmmsConstants;
 import com.pupilcc.smms.properties.SmmsProperties;
 import com.pupilcc.smms.user.dto.ProfileDataDTO;
+import com.pupilcc.smms.util.JsonUtils;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -42,6 +42,7 @@ public class UserService {
 
         String response = restTemplate.postForObject(
                 SmmsConstants.URL_API + SmmsConstants.URL_GET_PROFILE, request, String.class);
-        return JSON.parseObject(response, new TypeReference<BaseDataDTO<ProfileDataDTO>>(){});
+
+        return JsonUtils.jsonToObj(new TypeReference<BaseDataDTO<ProfileDataDTO>>(){}, response);
     }
 }

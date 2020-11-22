@@ -1,6 +1,7 @@
 package com.pupilcc.smms.service;
 
 import com.pupilcc.smms.base.dto.BaseDTO;
+import com.pupilcc.smms.base.dto.BaseDataDTO;
 import com.pupilcc.smms.base.dto.BaseListDataDTO;
 import com.pupilcc.smms.image.dto.ImageDataDTO;
 import com.pupilcc.smms.image.service.ImageService;
@@ -45,7 +46,7 @@ class ImageServiceTests {
         MultipartFile multipartFile = new MockMultipartFile(
                 "file.jpg", "free_stock_photo.jpg", "", in);
 
-        BaseListDataDTO<ImageDataDTO> dto = imageService.uploadImage(multipartFile, "json");
+        BaseDataDTO<ImageDataDTO> dto = imageService.uploadImage(multipartFile, "json");
         logger.info(dto.toString());
         Assertions.assertEquals(dto.getSuccess(), true);
     }

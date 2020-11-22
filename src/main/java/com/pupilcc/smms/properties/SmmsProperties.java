@@ -13,5 +13,5 @@ public class SmmsProperties {
     /**
      * API Token
      */
-    private String token = "";
+    private String token = "FJRT5HrCZpP5uYrUTNPIRHTfQru20nDb";
 }
