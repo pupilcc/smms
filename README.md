@@ -2,7 +2,7 @@
 
 ## 项目介绍
 
-这是一个基于 Java 的 SM.MS 图床第三方工具库
+封装了 sm.ms 图床 API 的 Java 工具库
 
 SM.MS API 文档地址： https://doc.sm.ms/
 
