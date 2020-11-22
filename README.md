@@ -12,7 +12,7 @@ SM.MS API 文档地址： https://doc.sm.ms/
 2. 使用 `mvn install` 命令安装到本地 maven 仓库
 3. 在 `pom.xml` 中引入：
 
-```json
+```xml
 <dependency>
     <groupId>com.pupilcc</groupId>
     <artifactId>smms</artifactId>
