@@ -15,10 +15,10 @@ import org.springframework.web.client.RestTemplate;
  * @author pupilcc
  */
 @Configuration
-public class Config {
+public class BeanConfig {
     public final SmmsProperties smmsProperties;
 
-    public Config(SmmsProperties smmsProperties) {
+    public BeanConfig(SmmsProperties smmsProperties) {
         this.smmsProperties = smmsProperties;
     }
 
