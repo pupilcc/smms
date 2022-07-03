@@ -29,14 +29,10 @@ public class SmmsServiceImpl implements SmmsService{
     private RestTemplate restTemplate;
     private HttpHeaders headers;
 
-    private HttpEntity getHttpEntity() {
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(headers);
-        return request;
-    }
-
     @Override
     public BaseDataResponse<ProfileDataDTO> getProfile() {
-        HttpEntity request = getHttpEntity();
+        MultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<>(1);
+        HttpEntity request = getHttpEntity(paramMap);
 
         ResponseEntity<String> response = restTemplate.exchange(
                 SmmsConstants.URL_API + SmmsConstants.URL_GET_PROFILE,
@@ -50,7 +46,7 @@ public class SmmsServiceImpl implements SmmsService{
 
     @Override
     public BaseListDataResponse<ImageDataDTO> uploadHistory() {
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(headers);
+        HttpEntity request = getHttpEntity();
         ResponseEntity<String> response = restTemplate.exchange(
                 SmmsConstants.URL_API + SmmsConstants.URL_UPLOAD_HISTORY,
                 HttpMethod.GET,
@@ -61,13 +57,13 @@ public class SmmsServiceImpl implements SmmsService{
         return JsonUtils.jsonToObj(new TypeReference<BaseListDataResponse<ImageDataDTO>>() {}, response.getBody());
     }
 
-
+    @Override
     public BaseDataResponse<ImageDataDTO> uploadImage(MultipartFile file, String format) {
         MultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<>(2);
         paramMap.add("smfile", file.getResource());
         paramMap.add("format", format);
 
-        HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<>(paramMap);
+        HttpEntity request = getHttpEntity(paramMap);
 
         ResponseEntity<String> response = restTemplate.exchange(
                 SmmsConstants.URL_API + SmmsConstants.URL_UPLOAD_IMAGE,
@@ -83,11 +79,19 @@ public class SmmsServiceImpl implements SmmsService{
     public BaseResponse deleteImage(String hash, String format) {
         String url = SmmsConstants.URL_API + SmmsConstants.URL_DELETE +
                 "/" + hash + "?format=" + format;
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(null);
-        ResponseEntity<String> response =
-                restTemplate.exchange(url, HttpMethod.GET, request, String.class);
+        HttpEntity request = getHttpEntity();
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
 
         return JsonUtils.jsonToObj(new BaseResponse(), response.getBody());
     }
 
+    private HttpEntity getHttpEntity() {
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(headers);
+        return request;
+    }
+
+    private HttpEntity getHttpEntity(MultiValueMap<String, Object> paramMap) {
+        HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<>(paramMap, headers);
+        return request;
+    }
 }

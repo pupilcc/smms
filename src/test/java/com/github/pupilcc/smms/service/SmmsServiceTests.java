@@ -62,7 +62,7 @@ class SmmsServiceTests {
     @Test
     @Disabled
     void deleteImage() {
-        BaseResponse dto = smmsService.deleteImage("MuQsRlE6qBpWb8NKFHIgxnfSdm", "json");
+        BaseResponse dto = smmsService.deleteImage("2HxJXOU1TNwLS8WqpIDy4a9QYd", "json");
         log.info(dto.toString());
         Assertions.assertEquals(dto.getSuccess(), true);
     }
