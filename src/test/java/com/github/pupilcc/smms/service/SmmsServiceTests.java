@@ -29,6 +29,7 @@ class SmmsServiceTests {
     private SmmsService smmsService;
 
     @Test
+    @Disabled
     void getProfile() {
         BaseDataResponse<ProfileDataDTO> dto = smmsService.getProfile();
         log.info("用户信息:" + dto.getData());
