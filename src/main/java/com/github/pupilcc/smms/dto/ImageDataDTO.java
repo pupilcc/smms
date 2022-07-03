@@ -1,10 +1,11 @@
-package com.github.pupilcc.smms.image.dto;
+package com.github.pupilcc.smms.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
  * 图片数据 DTO
+ *
  * @author pupilcc
  */
 @Data

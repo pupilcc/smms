@@ -8,14 +8,16 @@ import org.apache.commons.lang3.ObjectUtils;
 
 /**
  * JSON 工具类
+ *
  * @author pupilcc
  */
 public class JsonUtils {
 
     /**
      * json 转换成对象
+     *
      * @param jsonStr json字符串
-     * @param obj 对象
+     * @param obj     对象
      * @return Object
      */
     public static <T> T jsonToObj(T obj, String jsonStr) {
@@ -26,7 +28,7 @@ public class JsonUtils {
             ObjectMapper mapper = new ObjectMapper();
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             obj = mapper.readerFor(obj.getClass()).readValue(jsonStr);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return obj;
@@ -35,8 +37,9 @@ public class JsonUtils {
 
     /**
      * json 转换成对象
+     *
      * @param valueTypeRef 对象
-     * @param jsonStr json字符串
+     * @param jsonStr      json字符串
      * @return Object
      */
     public static <T> T jsonToObj(TypeReference<T> valueTypeRef, String jsonStr) {
@@ -47,7 +50,7 @@ public class JsonUtils {
             ObjectMapper mapper = new ObjectMapper();
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             return mapper.readValue(jsonStr, valueTypeRef);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -55,6 +58,7 @@ public class JsonUtils {
 
     /**
      * 对象转换成 json
+     *
      * @param obj 对象
      * @return json字符串
      */

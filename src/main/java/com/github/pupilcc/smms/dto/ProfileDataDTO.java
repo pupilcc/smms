@@ -1,10 +1,11 @@
-package com.github.pupilcc.smms.user.dto;
+package com.github.pupilcc.smms.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
  * 获取 Profile 接口中的 data 参数
+ *
  * @author pupilcc
  */
 @Data

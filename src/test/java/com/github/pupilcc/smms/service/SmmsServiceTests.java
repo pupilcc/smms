@@ -1,15 +1,15 @@
 package com.github.pupilcc.smms.service;
 
-import com.github.pupilcc.smms.base.dto.BaseDTO;
-import com.github.pupilcc.smms.base.dto.BaseDataDTO;
-import com.github.pupilcc.smms.image.dto.ImageDataDTO;
-import com.github.pupilcc.smms.image.service.ImageService;
-import com.github.pupilcc.smms.base.dto.BaseListDataDTO;
+import com.github.pupilcc.smms.domain.SmmsService;
+import com.github.pupilcc.smms.dto.ImageDataDTO;
+import com.github.pupilcc.smms.dto.ProfileDataDTO;
+import com.github.pupilcc.smms.response.BaseDataResponse;
+import com.github.pupilcc.smms.response.BaseListDataResponse;
+import com.github.pupilcc.smms.response.BaseResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
@@ -22,16 +22,24 @@ import java.io.InputStream;
 import java.util.Objects;
 
 @SpringBootTest
-class ImageServiceTests {
-    private Logger logger = LoggerFactory.getLogger(getClass());
+@Slf4j
+class SmmsServiceTests {
 
     @Autowired
-    private ImageService imageService;
+    private SmmsService smmsService;
 
     @Test
+    void getProfile() {
+        BaseDataResponse<ProfileDataDTO> dto = smmsService.getProfile();
+        log.info("用户信息:" + dto.getData());
+        Assertions.assertEquals(dto.getSuccess(), true);
+    }
+
+    @Test
+    @Disabled
     void uploadHistory() {
-        BaseListDataDTO<ImageDataDTO> dto = imageService.uploadHistory();
-        logger.info(dto.toString());
+        BaseListDataResponse<ImageDataDTO> dto = smmsService.uploadHistory();
+        log.info(dto.toString());
         Assertions.assertEquals(dto.getSuccess(), true);
     }
 
@@ -40,22 +48,22 @@ class ImageServiceTests {
     void uploadImage() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
 
-        String url = "https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg";
+        String url = "https://vip2.loli.io/2022/07/03/U3h1ODWtNS2YClq.jpg";
         ResponseEntity<Resource> entity = restTemplate.getForEntity(url, Resource.class);
         InputStream in = Objects.requireNonNull(entity.getBody()).getInputStream();
         MultipartFile multipartFile = new MockMultipartFile(
-                "file.jpg", "free_stock_photo.jpg", "", in);
+                "file.jpg", "U3h1ODWtNS2YClq.jpg", "", in);
 
-        BaseDataDTO<ImageDataDTO> dto = imageService.uploadImage(multipartFile, "json");
-        logger.info(dto.toString());
+        BaseDataResponse<ImageDataDTO> dto = smmsService.uploadImage(multipartFile, "json");
+        log.info(dto.toString());
         Assertions.assertEquals(dto.getSuccess(), true);
     }
 
     @Test
     @Disabled
     void deleteImage() {
-        BaseDTO dto = imageService.deleteImage("GrH1oPac7EmbWlFxvg4Uksd2QJ", "json");
-        logger.info(dto.toString());
+        BaseResponse dto = smmsService.deleteImage("MuQsRlE6qBpWb8NKFHIgxnfSdm", "json");
+        log.info(dto.toString());
         Assertions.assertEquals(dto.getSuccess(), true);
     }
 }

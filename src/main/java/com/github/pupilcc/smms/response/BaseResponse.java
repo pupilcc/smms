@@ -1,14 +1,15 @@
-package com.github.pupilcc.smms.base.dto;
+package com.github.pupilcc.smms.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
- * 基础 DTO 对象
+ * 基础响应对象
+ *
  * @author pupilcc
  */
 @Data
-public class BaseDTO {
+public class BaseResponse {
     /**
      * Request status
      */
