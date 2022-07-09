@@ -8,7 +8,8 @@
     <version>0.0.3</version>
 
     <name>smms</name>
-    <description>smms api</description>
+    <description>smms sdk</description>
+    <url>https://github.com/pupilcc/smms</url>
 
     <licenses>
         <license>
