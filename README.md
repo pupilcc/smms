@@ -14,7 +14,7 @@ SM.MS API 文档地址： https://doc.sm.ms/
 <dependency>
     <groupId>com.pupilcc.sdk</groupId>
     <artifactId>smms</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.3</version>
 </dependency>
 ```
 
