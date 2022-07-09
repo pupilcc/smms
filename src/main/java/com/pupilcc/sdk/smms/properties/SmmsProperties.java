@@ -1,4 +1,4 @@
-package com.github.pupilcc.smms.properties;
+package com.pupilcc.sdk.smms.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -1,10 +1,10 @@
-package com.github.pupilcc.smms.domain;
+package com.pupilcc.sdk.smms.domain;
 
-import com.github.pupilcc.smms.dto.ImageDataDTO;
-import com.github.pupilcc.smms.dto.ProfileDataDTO;
-import com.github.pupilcc.smms.response.BaseDataResponse;
-import com.github.pupilcc.smms.response.BaseListDataResponse;
-import com.github.pupilcc.smms.response.BaseResponse;
+import com.pupilcc.sdk.smms.dto.ImageDataDTO;
+import com.pupilcc.sdk.smms.dto.ProfileDataDTO;
+import com.pupilcc.sdk.smms.response.BaseDataResponse;
+import com.pupilcc.sdk.smms.response.BaseListDataResponse;
+import com.pupilcc.sdk.smms.response.BaseResponse;
 
 import java.io.File;
 

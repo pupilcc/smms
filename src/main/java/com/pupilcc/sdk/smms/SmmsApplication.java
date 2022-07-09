@@ -1,4 +1,4 @@
-package com.github.pupilcc.smms;
+package com.pupilcc.sdk.smms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

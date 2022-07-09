@@ -1,4 +1,4 @@
-package com.github.pupilcc.smms.util;
+package com.pupilcc.sdk.smms.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;

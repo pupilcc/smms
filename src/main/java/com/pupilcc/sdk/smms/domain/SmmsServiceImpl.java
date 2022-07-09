@@ -1,15 +1,15 @@
-package com.github.pupilcc.smms.domain;
+package com.pupilcc.sdk.smms.domain;
 
 import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.github.pupilcc.smms.dto.ImageDataDTO;
-import com.github.pupilcc.smms.dto.ProfileDataDTO;
-import com.github.pupilcc.smms.properties.SmmsConstants;
-import com.github.pupilcc.smms.response.BaseDataResponse;
-import com.github.pupilcc.smms.response.BaseListDataResponse;
-import com.github.pupilcc.smms.response.BaseResponse;
-import com.github.pupilcc.smms.util.JsonUtils;
+import com.pupilcc.sdk.smms.dto.ImageDataDTO;
+import com.pupilcc.sdk.smms.dto.ProfileDataDTO;
+import com.pupilcc.sdk.smms.properties.SmmsConstants;
+import com.pupilcc.sdk.smms.response.BaseDataResponse;
+import com.pupilcc.sdk.smms.response.BaseListDataResponse;
+import com.pupilcc.sdk.smms.response.BaseResponse;
+import com.pupilcc.sdk.smms.util.JsonUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

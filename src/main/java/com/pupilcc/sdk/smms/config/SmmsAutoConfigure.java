@@ -1,9 +1,9 @@
-package com.github.pupilcc.smms.config;
+package com.pupilcc.sdk.smms.config;
 
 import cn.hutool.http.Header;
-import com.github.pupilcc.smms.domain.SmmsService;
-import com.github.pupilcc.smms.domain.SmmsServiceImpl;
-import com.github.pupilcc.smms.properties.SmmsProperties;
+import com.pupilcc.sdk.smms.domain.SmmsService;
+import com.pupilcc.sdk.smms.domain.SmmsServiceImpl;
+import com.pupilcc.sdk.smms.properties.SmmsProperties;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

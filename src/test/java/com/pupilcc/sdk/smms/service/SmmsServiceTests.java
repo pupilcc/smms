@@ -1,12 +1,12 @@
-package com.github.pupilcc.smms.service;
+package com.pupilcc.sdk.smms.service;
 
 import cn.hutool.http.HttpRequest;
-import com.github.pupilcc.smms.domain.SmmsService;
-import com.github.pupilcc.smms.dto.ImageDataDTO;
-import com.github.pupilcc.smms.dto.ProfileDataDTO;
-import com.github.pupilcc.smms.response.BaseDataResponse;
-import com.github.pupilcc.smms.response.BaseListDataResponse;
-import com.github.pupilcc.smms.response.BaseResponse;
+import com.pupilcc.sdk.smms.domain.SmmsService;
+import com.pupilcc.sdk.smms.dto.ImageDataDTO;
+import com.pupilcc.sdk.smms.dto.ProfileDataDTO;
+import com.pupilcc.sdk.smms.response.BaseDataResponse;
+import com.pupilcc.sdk.smms.response.BaseListDataResponse;
+import com.pupilcc.sdk.smms.response.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Assertions;

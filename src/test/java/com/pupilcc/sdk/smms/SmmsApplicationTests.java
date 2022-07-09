@@ -1,4 +1,4 @@
-package com.github.pupilcc.smms;
+package com.pupilcc.sdk.smms;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

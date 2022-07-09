@@ -1,4 +1,4 @@
-package com.github.pupilcc.smms.response;
+package com.pupilcc.sdk.smms.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
