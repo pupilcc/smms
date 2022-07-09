@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.pupilcc.sdk.smms.config.SmmsAutoConfigure
