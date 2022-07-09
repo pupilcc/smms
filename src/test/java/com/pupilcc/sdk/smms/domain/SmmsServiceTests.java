@@ -1,7 +1,6 @@
-package com.pupilcc.sdk.smms.service;
+package com.pupilcc.sdk.smms.domain;
 
 import cn.hutool.http.HttpRequest;
-import com.pupilcc.sdk.smms.domain.SmmsService;
 import com.pupilcc.sdk.smms.dto.ImageDataDTO;
 import com.pupilcc.sdk.smms.dto.ProfileDataDTO;
 import com.pupilcc.sdk.smms.response.BaseDataResponse;
@@ -13,12 +12,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
 import java.io.InputStream;
 
-@SpringBootTest
 @Slf4j
 class SmmsServiceTests {
 
@@ -29,9 +26,9 @@ class SmmsServiceTests {
     @Disabled
     void getProfile() {
         BaseDataResponse<ProfileDataDTO> dto = smmsService.getProfile();
-        log.info("用户信息:" + dto.getData());
 
         Assertions.assertNotNull(dto);
+        log.info("用户信息: {}", dto.getData());
         Assertions.assertEquals(dto.getSuccess(), true);
     }
 
