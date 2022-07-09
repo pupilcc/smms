@@ -5,7 +5,8 @@ import com.github.pupilcc.smms.dto.ProfileDataDTO;
 import com.github.pupilcc.smms.response.BaseDataResponse;
 import com.github.pupilcc.smms.response.BaseListDataResponse;
 import com.github.pupilcc.smms.response.BaseResponse;
-import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 
 /**
  * @author pupilcc
@@ -46,5 +47,5 @@ public interface SmmsService {
      * @param format Return Type: json or xml, the default value is json
      * @return Upload Image DTO
      */
-    BaseDataResponse<ImageDataDTO> uploadImage(MultipartFile file, String format);
+    BaseDataResponse<ImageDataDTO> uploadImage(File file, String format);
 }
