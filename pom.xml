@@ -5,7 +5,7 @@
 
     <groupId>com.pupilcc.sdk</groupId>
     <artifactId>smms</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
 
     <name>smms</name>
     <description>smms sdk</description>
